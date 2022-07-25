@@ -19,15 +19,15 @@ struct ContentView: View {
                     NewsItemView(newsItem: item)
                 }
                 .onAppear {
-                    if viewModel.newsItems.last?.id == item.id {
-                        viewModel.getItems()
+                    if viewModel.newsItems.last?.objectID == item.objectID {
+                        viewModel.getStories()
                     }
                 }
             }
             .navigationTitle("Top Stories")
         }
         .onAppear {
-            viewModel.getTopNewIds()
+            viewModel.getStories()
         }
     }
 }
@@ -35,5 +35,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(NewsViewModel())
     }
 }

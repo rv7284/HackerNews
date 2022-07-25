@@ -8,31 +8,33 @@
 import SwiftUI
 
 struct NewsItemView: View {
-    let newsItem: NewsItem
+    let newsItem: HNItem
     var body: some View {
-        HStack(spacing: 12) {
-            VStack {
-                Image(systemName: "arrowtriangle.up.fill")
-                Text(String(newsItem.score))
-            }
-            .frame(width: 36)
-            VStack(alignment: .leading) {
-                Text(newsItem.title)
+        VStack(alignment: .leading) {
+            HStack {
+                Text(newsItem.title ?? "N/A")
                     .font(.headline)
                     .lineLimit(2)
-                HStack {
-                    Spacer()
-                    Text(newsItem.by)
-                        .font(.caption)
-                        .foregroundColor(.accentColor)
-                }
             }
+            HStack(spacing: 4) {
+                Text(String(newsItem.points ?? 0) + " points by " + newsItem.author)
+                Text("·")
+                Text(newsItem.createdAt?.relativeString() ?? "N/A")
+                Text("·")
+                Text(String(newsItem.numComments ?? 0) + " comments")
+            }
+            .font(.caption)
+            .foregroundColor(.secondary)
         }
     }
 }
 
 struct NewsItemView_Previews: PreviewProvider {
     static var previews: some View {
-        NewsItemView(newsItem: NewsItem.sample)
+        Group {
+            NewsItemView(newsItem: HNItem.sample)
+            NewsItemView(newsItem: HNItem.sample)
+                .preferredColorScheme(.dark)
+        }
     }
 }

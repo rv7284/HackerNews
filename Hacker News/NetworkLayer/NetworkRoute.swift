@@ -11,21 +11,15 @@ import Foundation
 private let baseUrl = "http://hn.algolia.com/api/v1/"
 
 enum ApiRoute {
-    case getStories
-    case topstories
-    case item(Int)
-    case userInfo(String)
+    case getActiveStories
+    case getLatestStories(page: Int)
     
     private var endPoint: String {
         switch self {
-        case .getStories:
+        case .getActiveStories:
             return "search"
-        case .topstories:
-            return "topstories.json"
-        case .item(let id):
-            return "item/\(id).json"
-        case .userInfo(let userId):
-            return "user/\(userId).json"
+        case .getLatestStories(let page):
+            return "search_by_date?page=\(page)"
         }
     }
     
@@ -35,7 +29,7 @@ enum ApiRoute {
     
     private var method: String {
         switch self {
-        case .topstories, .item(_), .userInfo(_), .getStories:
+        case .getActiveStories, .getLatestStories:
             return "GET"
         }
     }

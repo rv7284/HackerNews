@@ -16,6 +16,6 @@ struct UserNewsView: View {
 
 struct UserNewsView_Previews: PreviewProvider {
     static var previews: some View {
-        UserNewsView(user: NewsItem.sample.by)
+        UserNewsView(user: HNItem.sample.author)
     }
 }

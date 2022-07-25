@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4158F33A288DAA1D009E171B /* UserNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4158F339288DAA1D009E171B /* UserNewsView.swift */; };
-		4158F33C288DAB9C009E171B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4158F33B288DAB9C009E171B /* UserInfo.swift */; };
 		4158F33E288DABC4009E171B /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4158F33D288DABC4009E171B /* UserDetailView.swift */; };
+		415EA3D8288EF20000DBC804 /* HNItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415EA3D7288EF20000DBC804 /* HNItems.swift */; };
+		415EA3DC288EFB2C00DBC804 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415EA3DB288EFB2C00DBC804 /* Date+Extension.swift */; };
 		41A52749288D505700B90645 /* NewsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A52748288D505700B90645 /* NewsItemView.swift */; };
 		41E4933F288D3EB100F072CE /* Hacker_NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E4933E288D3EB100F072CE /* Hacker_NewsApp.swift */; };
 		41E49341288D3EB100F072CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E49340288D3EB100F072CE /* ContentView.swift */; };
@@ -18,13 +19,13 @@
 		41E4934E288D3FB900F072CE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E4934C288D3FB900F072CE /* NetworkManager.swift */; };
 		41E4934F288D3FB900F072CE /* NetworkRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E4934D288D3FB900F072CE /* NetworkRoute.swift */; };
 		41E49351288D41ED00F072CE /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E49350288D41ED00F072CE /* NewsViewModel.swift */; };
-		41E49354288D444500F072CE /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E49353288D444500F072CE /* NewsItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4158F339288DAA1D009E171B /* UserNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNewsView.swift; sourceTree = "<group>"; };
-		4158F33B288DAB9C009E171B /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		4158F33D288DABC4009E171B /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		415EA3D7288EF20000DBC804 /* HNItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNItems.swift; sourceTree = "<group>"; };
+		415EA3DB288EFB2C00DBC804 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		41A52748288D505700B90645 /* NewsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemView.swift; sourceTree = "<group>"; };
 		41E4933B288D3EB100F072CE /* Hacker News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41E4933E288D3EB100F072CE /* Hacker_NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hacker_NewsApp.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		41E4934C288D3FB900F072CE /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		41E4934D288D3FB900F072CE /* NetworkRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRoute.swift; sourceTree = "<group>"; };
 		41E49350288D41ED00F072CE /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
-		41E49353288D444500F072CE /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +48,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		415EA3D9288EFB0500DBC804 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				41E4934C288D3FB900F072CE /* NetworkManager.swift */,
+				41E4934D288D3FB900F072CE /* NetworkRoute.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		415EA3DA288EFB0E00DBC804 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				415EA3DB288EFB2C00DBC804 /* Date+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		41E49332288D3EB100F072CE = {
 			isa = PBXGroup;
 			children = (
@@ -67,8 +84,8 @@
 		41E4933D288D3EB100F072CE /* Hacker News */ = {
 			isa = PBXGroup;
 			children = (
-				41E4934C288D3FB900F072CE /* NetworkManager.swift */,
-				41E4934D288D3FB900F072CE /* NetworkRoute.swift */,
+				415EA3DA288EFB0E00DBC804 /* Extension */,
+				415EA3D9288EFB0500DBC804 /* NetworkLayer */,
 				41E49352288D443400F072CE /* Model */,
 				41E4933E288D3EB100F072CE /* Hacker_NewsApp.swift */,
 				41E49340288D3EB100F072CE /* ContentView.swift */,
@@ -93,8 +110,7 @@
 		41E49352288D443400F072CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				41E49353288D444500F072CE /* NewsItem.swift */,
-				4158F33B288DAB9C009E171B /* UserInfo.swift */,
+				415EA3D7288EF20000DBC804 /* HNItems.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,13 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				41E4934E288D3FB900F072CE /* NetworkManager.swift in Sources */,
-				41E49354288D444500F072CE /* NewsItem.swift in Sources */,
+				415EA3D8288EF20000DBC804 /* HNItems.swift in Sources */,
 				41E49341288D3EB100F072CE /* ContentView.swift in Sources */,
 				41E49351288D41ED00F072CE /* NewsViewModel.swift in Sources */,
 				4158F33A288DAA1D009E171B /* UserNewsView.swift in Sources */,
+				415EA3DC288EFB2C00DBC804 /* Date+Extension.swift in Sources */,
 				41E4934F288D3FB900F072CE /* NetworkRoute.swift in Sources */,
 				41E4933F288D3EB100F072CE /* Hacker_NewsApp.swift in Sources */,
-				4158F33C288DAB9C009E171B /* UserInfo.swift in Sources */,
 				4158F33E288DABC4009E171B /* UserDetailView.swift in Sources */,
 				41A52749288D505700B90645 /* NewsItemView.swift in Sources */,
 			);
