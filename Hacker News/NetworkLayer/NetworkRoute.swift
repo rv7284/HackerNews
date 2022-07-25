@@ -7,15 +7,19 @@
 
 import Foundation
 
-private let baseUrl = "https://hacker-news.firebaseio.com/v0/"
+//private let baseUrl = "https://hacker-news.firebaseio.com/v0/"
+private let baseUrl = "http://hn.algolia.com/api/v1/"
 
 enum ApiRoute {
+    case getStories
     case topstories
     case item(Int)
     case userInfo(String)
     
     private var endPoint: String {
         switch self {
+        case .getStories:
+            return "search"
         case .topstories:
             return "topstories.json"
         case .item(let id):
@@ -31,7 +35,7 @@ enum ApiRoute {
     
     private var method: String {
         switch self {
-        case .topstories, .item(_), .userInfo(_):
+        case .topstories, .item(_), .userInfo(_), .getStories:
             return "GET"
         }
     }

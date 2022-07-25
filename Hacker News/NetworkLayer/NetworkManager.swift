@@ -16,8 +16,10 @@ class NetworkManager {
             }
             
             if let data = data {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601withFractionalSeconds
                 do {
-                    let responseModel = try JSONDecoder().decode(model, from: data)
+                    let responseModel = try decoder.decode(model, from: data)
                     completion(.success(responseModel))
                 } catch {
                     print(error)
