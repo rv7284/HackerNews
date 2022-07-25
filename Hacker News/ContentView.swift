@@ -8,9 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: NewsViewModel
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(viewModel.newsItems, id: \.self) { item in
+                NavigationLink {
+                    Text("Details")
+                } label: {
+                    NewsItemView(newsItem: item)
+                }
+                .onAppear {
+                    if viewModel.newsItems.last?.id == item.id {
+                        viewModel.getItems()
+                    }
+                }
+            }
+            .navigationTitle("Top Stories")
+        }
+        .onAppear {
+            viewModel.getTopNewIds()
+        }
     }
 }
 

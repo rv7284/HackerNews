@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Hacker_NewsApp: App {
+    @StateObject var viewModel = NewsViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }
