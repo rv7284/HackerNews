@@ -33,9 +33,10 @@ struct HNItem: Codable, Hashable {
     let author: String
     let points: Int?
     let storyText: String?
-//    let commentText: JSONNull?
+    let commentText: String?
     let numComments: Int?
 //    let storyID, storyTitle, storyURL: JSONNull?
+    let storyURL: String?
     let parentID: Int?
     let createdAtI: Int
     let relevancyScore: Int?
@@ -47,11 +48,11 @@ struct HNItem: Codable, Hashable {
         case createdAt = "created_at"
         case title, url, author, points
         case storyText = "story_text"
-//        case commentText = "comment_text"
+        case commentText = "comment_text"
         case numComments = "num_comments"
 //        case storyID = "story_id"
 //        case storyTitle = "story_title"
-//        case storyURL = "story_url"
+        case storyURL = "story_url"
         case parentID = "parent_id"
         case createdAtI = "created_at_i"
         case relevancyScore = "relevancy_score"

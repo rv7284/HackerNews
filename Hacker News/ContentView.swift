@@ -9,12 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: NewsViewModel
+    @State var showFilter = false
     
     var body: some View {
         NavigationView {
             List(viewModel.newsItems, id: \.self) { item in
                 NavigationLink {
-                    Text("Details")
+                    NewsItemDetailView(item: item)
                 } label: {
                     NewsItemView(newsItem: item)
                 }
@@ -25,7 +26,18 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Top Stories")
+            .toolbar {
+                Button {
+                    showFilter.toggle()
+                } label: {
+                    Image(systemName: "line.3.horizontal.decrease.circle")
+                }
+
+            }
         }
+        .sheet(isPresented: $showFilter, content: {
+            FilterView()
+        })
         .onAppear {
             viewModel.getStories()
         }

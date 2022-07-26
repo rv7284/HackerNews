@@ -10,16 +10,22 @@ import Foundation
 //private let baseUrl = "https://hacker-news.firebaseio.com/v0/"
 private let baseUrl = "http://hn.algolia.com/api/v1/"
 
+private var urlPoint: String {
+    let showNewsBy = UserDefaults.standard.string(forKey: "displayOption") ?? "Date"
+    let point = showNewsBy  == "Date" ? "search_by_date" : "search"
+    return point
+}
+
 enum ApiRoute {
-    case getActiveStories
-    case getLatestStories(page: Int)
+    case getStories(page: Int, tag: String)
+    case getComment(id: String)
     
     private var endPoint: String {
         switch self {
-        case .getActiveStories:
-            return "search"
-        case .getLatestStories(let page):
-            return "search_by_date?page=\(page)"
+        case .getStories(let page, let tag):
+            return "\(urlPoint)?page=\(page)&tags=\(tag)"
+        case .getComment(let id):
+            return "\(urlPoint)?tags=comment,story_\(id)"
         }
     }
     
@@ -29,7 +35,7 @@ enum ApiRoute {
     
     private var method: String {
         switch self {
-        case .getActiveStories, .getLatestStories:
+        case .getStories(_, _), .getComment(_):
             return "GET"
         }
     }

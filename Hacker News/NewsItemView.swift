@@ -16,8 +16,13 @@ struct NewsItemView: View {
                     .font(.headline)
                     .lineLimit(2)
             }
+            if let url = newsItem.url ?? newsItem.storyURL {
+                Link(url, destination: URL(string: url)!)
+                    .font(.caption2)
+                    .lineLimit(1)
+            }
             HStack(spacing: 4) {
-                Text(String(newsItem.points ?? 0) + " points by " + newsItem.author)
+                Text(String(newsItem.points ?? 0) + " points")
                 Text("·")
                 Text(newsItem.createdAt?.relativeString() ?? "N/A")
                 Text("·")
